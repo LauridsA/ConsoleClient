@@ -7,6 +7,8 @@ namespace ConsoleClient
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            ClientCaller caller = new ClientCaller();
+            caller.CallServiceInParallel(500);
         }
     }
 }
