@@ -32,7 +32,11 @@ namespace ConsoleClient
             var rand2 = rng.Next(10000, 100000);
             string logString = "";
             //log start
-            Log("Starting request: ");
+            Log(
+                "Starting request with params:\n " +
+                 "random 1:" + rand1 + "\n" + 
+                 "random 2:" + rand2 + "\n"
+                 );
 
             HttpResponseMessage response = await client.GetAsync(Path.Combine(url, rand1.ToString(), rand2.ToString()));
             if (response.IsSuccessStatusCode)
@@ -45,6 +49,7 @@ namespace ConsoleClient
         private void Log(string logString)
         {
             //do the logging
+            Console.WriteLine(logString);
         }
     }
 }
