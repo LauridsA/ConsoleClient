@@ -10,7 +10,7 @@ namespace ConsoleClient
     public class ClientCaller
     {
         HttpClient client = new HttpClient();
-        private string url = "Whatever the path is";
+        private string url = "http://52.150.34.160/primenumber";
         public ClientCaller()
         {
             //intentionally empty
