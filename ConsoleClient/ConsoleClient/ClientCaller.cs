@@ -30,12 +30,14 @@ namespace ConsoleClient
             Random rng = new Random();
             var rand1 = rng.Next(5000, 9000);
             var rand2 = rng.Next(10000, 100000);
+            var guid = Guid.NewGuid();
             string logString = "";
             //log start
             Log(
                 "Starting request with params:\n " +
                  "random 1:" + rand1 + "\n" + 
-                 "random 2:" + rand2 + "\n"
+                 "random 2:" + rand2 + "\n" +
+                 "TraceId: " + guid.ToString() + "\n"
                  );
 
             HttpResponseMessage response = await client.GetAsync(Path.Combine(url, rand1.ToString(), rand2.ToString()));
@@ -43,7 +45,9 @@ namespace ConsoleClient
                 logString = await response.Content.ReadAsStringAsync();
 
             //log end
-            Log("Logging end:\n" + logString);
+            Log("Logging end:\n" +
+                "TraceId: "+ guid +"\n"
+                + logString);
         }
 
         private void Log(string logString)
